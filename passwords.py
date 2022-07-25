@@ -5,22 +5,29 @@ class Passwords:
     passwords = {}
 
     # Creation of new password
-    def _new(style, size, name):
-        password = Passwords._generate(style, size)
+    def _new(name, size, style):
+        password = Passwords._generate(size, style)
         Passwords.passwords[name] = password 
 
     # Generation of password
-    def _generate(style, size):
-        # decision of password type
-        if style == "letters":
-            sample = string.ascii_letters 
-        elif style == "numbers":
-            sample = string.digits
-        elif style == "mix":
-            sample = string.ascii_letters + string.digits
-
+    def _generate(size, style):
+        # listing possible symbols
+        sample = ""
+        if style[0] == True:
+            sample += string.ascii_lowercase 
+        else: pass
+        if style[1] == True:
+            sample += string.ascii_uppercase
+        else: pass
+        if style[2] == True:
+            sample += string.digits
+        else: pass
+        if style[3] == True:
+            sample += "+-_*%#@"
+                
         # the generating line itself
         password = ''.join(secrets.choice(sample) for i in range(size))
+
         return password
 
     # Changing of password manually
@@ -29,8 +36,8 @@ class Passwords:
         Passwords.passwords[name] = password 
 
     # Changing of password with generation
-    def _change_auto(name, style, size):
-        password = Passwords._generate(style, size)
+    def _change_auto(name, size, style):
+        password = Passwords._generate(size, style)
         Passwords.passwords[name] = password 
 
     # Deleting of password

@@ -22,7 +22,7 @@ class Interface():
 
             # options choosing statement
             elif self.string == "new": # creates new password
-                self._new()
+                self._new() 
             elif self.string == "list": # lists passwords
                 self._list()
             elif self.string == "change": # changes password
@@ -37,11 +37,20 @@ class Interface():
         print()
         name = input("\nEnter new password's name: ")
         size = int(input("Enter new password's length: "))
-        style = input("Enter new password's style(mix, letters, numbers): ")
+        
+        # Taking which symbols to use
+        symbol_types = ["lowercase", "uppercase", "numbers", "special"]
+        style = [] # list for saving results of questions
+        for symbol_type in symbol_types:
+            question = input(f"Do you want to use {symbol_type}(Y/n): ")
+            
+            if question == "Y" or "y" or "yes":
+                style.append(True)
+            else:
+                style.append = (False)
         print()
-
         # assignment of password
-        Passwords._new(style, size, name)
+        Passwords._new(name, size, style)
          
     # List of all the passwords
     def _list(self):
@@ -64,7 +73,19 @@ class Interface():
                 if do == "Y":
                     size = int(input("Enter new password's length: "))
                     style = input("Enter new password's style(mix, letters, numbers): ")
-                    Passwords._change_auto(name, style, size)
+
+                    # Taking which symbols to use
+                    symbol_types = [lowrcase, uppercase, numbers, special]
+                    style = [] # list for saving results of questions
+                    for symbol_type in symbol_types:
+                        question = input(f"Do you want to use {symbol_type}(Y/n): ")
+                        
+                        if question == "Y" or "y" or "yes":
+                            style.append(True)
+                        else:
+                            style.append = (False)
+
+                    Passwords._change_auto(name, size, style)
                     break
 
                 elif do == "n":
