@@ -1,5 +1,6 @@
 import string
 import secrets
+import json
 
 class Passwords:
     passwords = {}
@@ -44,4 +45,9 @@ class Passwords:
     def _delete(name):
         del Passwords.passwords[name]
 
+    # Writing to file
+    def _write():
+        with open('details.json', 'w') as convert_file:
+            convert_file.write(json.dumps(Passwords.passwords))
 
+    

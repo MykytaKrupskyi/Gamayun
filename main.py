@@ -51,6 +51,7 @@ class Interface():
         print()
         # assignment of password
         Passwords._new(name, size, style)
+        Passwords._write()
          
     # List of all the passwords
     def _list(self):
@@ -98,12 +99,14 @@ class Interface():
 
         else: print("You have no passwords to change!")
         print()
+        Passwords._write()
 
     # Deletion of password
     def _delete(self):
         self._list()
         name = input("Enter which password to delete: ")
         Passwords._delete(name)
+        Passwords._write()
 
 # Main part of program
 defined = Interface()
