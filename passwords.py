@@ -47,7 +47,18 @@ class Passwords:
 
     # Writing to file
     def _write():
-        with open('details.json', 'w') as convert_file:
+        with open('data.json', 'w') as convert_file:
             convert_file.write(json.dumps(Passwords.passwords))
 
-    
+    # Reading of file
+    #Passwords.passwords[name] = password 
+    def _read():
+        try:
+            with open('data.json') as json_file:
+                data = json.load(json_file)
+                for index in range(0, len(data)-1):
+                    names_list = list(data)
+                    name = names_list[index]
+                    Passwords.passwords[name] = data[name] 
+        except: 
+            print("NO data.json found!")

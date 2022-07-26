@@ -3,6 +3,7 @@ from passwords import *
 # class for using a cli-interface
 class Interface():
     def __init__(self):
+        Passwords._read()
         self.string = str()
         print("\nHello, this is Gamayun!\
         \nI'm password manager.\
