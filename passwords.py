@@ -1,6 +1,7 @@
 import string
 import secrets
 import json
+from cryptography.fernet import Fernet
 
 class Passwords:
     passwords = {}
@@ -47,18 +48,28 @@ class Passwords:
 
     # Writing to file
     def _write():
-        with open('data.json', 'w') as convert_file:
-            convert_file.write(json.dumps(Passwords.passwords))
+        try:
+            with open('filekey.key', 'rb') as filekey:
+                key = filekey.read()
+        except:
+            key = Fernet.generate_key()
+            with open('filekey.key', 'wb') as filekey:
+                filekey.write(key)
+
+        fernet = Fernet(key)
+        passwords_data = str(Passwords.passwords).encode()
+        encrypted_passwords_data = str(fernet.encrypt(passwords_data))
+        with open('saved.json', 'w') as convert_file:
+            convert_file.write(encrypted_passwords_data)
 
     # Reading of file
-    #Passwords.passwords[name] = password 
     def _read():
         try:
-            with open('data.json') as json_file:
+            with open('saved.json') as json_file:
                 data = json.load(json_file)
                 for index in range(0, len(data)-1):
                     names_list = list(data)
                     name = names_list[index]
                     Passwords.passwords[name] = data[name] 
         except: 
-            print("NO data.json found!")
+            print("NO saved.json found!")
