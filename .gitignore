@@ -1,3 +1,5 @@
 # except files generated while usage
 *.key
 *.json
+*.swp
+__pycache__

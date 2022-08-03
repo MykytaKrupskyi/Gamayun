@@ -1,9 +1,3 @@
-import string
-import secrets
-import json
-from cryptography.fernet import Fernet
-import os
-
 class Passwords:
     passwords = {}
 

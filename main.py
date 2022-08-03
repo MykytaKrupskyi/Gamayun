@@ -1,5 +1,11 @@
 from passwords import *
 
+import string
+import secrets
+import json
+import os
+from cryptography.fernet import Fernet
+
 # class for using a cli-interface
 class Interface():
     def __init__(self):
