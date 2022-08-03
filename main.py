@@ -19,7 +19,8 @@ class Interface():
                 \nnew - to create new password\
                 \nlist - to list all passwords\
                 \nchange - to change password\
-                \nremove - to delete password\n")
+                \nremove - to delete password\
+                \nsave - to save passwords\n")
 
             # options choosing statement
             elif self.string == "new": # creates new password
@@ -30,6 +31,8 @@ class Interface():
                 self._change()
             elif self.string == "remove": # remove password
                 self._delete()
+            elif self.string == "save": # saves passwords
+                Passwords._write()
             else:
                 pass
     
@@ -52,7 +55,6 @@ class Interface():
         print()
         # assignment of password
         Passwords._new(name, size, style)
-        Passwords._write()
          
     # List of all the passwords
     def _list(self):
@@ -100,14 +102,12 @@ class Interface():
 
         else: print("You have no passwords to change!")
         print()
-        Passwords._write()
 
     # Deletion of password
     def _delete(self):
         self._list()
         name = input("Enter which password to delete: ")
         Passwords._delete(name)
-        Passwords._write()
 
 # Main part of program
 defined = Interface()
