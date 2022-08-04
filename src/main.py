@@ -1,15 +1,10 @@
 from passwords import *
-
-import string
-import secrets
-import json
-import os
-from cryptography.fernet import Fernet
+from database import *
 
 # class for using a cli-interface
 class Interface():
     def __init__(self):
-        Passwords._read()
+        database._read()
         self.string = str()
         print("\nHello, this is Gamayun!\
         \nI'm password manager.\
@@ -38,7 +33,7 @@ class Interface():
             elif self.string == "remove": # remove password
                 self._delete()
             elif self.string == "save": # saves passwords
-                Passwords._write()
+                database._write()
             else:
                 pass
     
