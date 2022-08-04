@@ -9,6 +9,10 @@ class Passwords:
         password = Passwords._generate(size, style)
         Passwords.passwords[name] = password 
 
+    # Manual creation of password
+    def _new_manual(name, entered_password):
+        Passwords.passwords[name] = entered_password
+
     # Generation of password
     def _generate(size, style):
         # listing possible symbols

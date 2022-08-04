@@ -40,23 +40,34 @@ class Interface():
     # Creating new password
     def _new(self):
         print()
-        name = input("\nEnter new password's name: ")
-        size = int(input("Enter new password's length: "))
+        option = input("Do you want to generate password?(Y/n): ")
         
-        # Taking which symbols to use
-        symbol_types = ["lowercase", "uppercase", "numbers", "special"]
-        style = [] # list for saving results of questions
-        for symbol_type in symbol_types:
-            question = input(f"Do you want to use {symbol_type}(Y/n): ")
+        if option == "Y": # generation of password
+            name = input("\nEnter new password's name: ")
+            size = int(input("Enter new password's length: "))
             
-            if question == "Y" or "y" or "yes":
-                style.append(True)
-            else:
-                style.append = (False)
-        print()
-        # assignment of password
-        Passwords._new(name, size, style)
+            # Taking which symbols to use
+            symbol_types = ["lowercase", "uppercase", "numbers", "special"]
+            style = [] # list for saving results of questions
+            for symbol_type in symbol_types:
+                question = input(f"Do you want to use {symbol_type}(Y/n): ")
+                
+                if question == "Y" or "y" or "yes":
+                    style.append(True)
+                else:
+                    style.append = (False)
+            print()
+            # assignment of password
+            Passwords._new(name, size, style)
+
+        elif option == "n": # manual input of password
+            name = input("\nEnter new password's name: ")
+            entered_password = input("Enter the password: ")
+            Passwords._new_manual(name, entered_password)
          
+        else: # wrong input handling
+            print("No such option!")
+
     # List of all the passwords
     def _list(self):
         print()
