@@ -1,5 +1,6 @@
 from passwords import *
 from database import *
+from getpass import getpass
 
 # class for using a cli-interface
 class Interface():
@@ -40,10 +41,10 @@ class Interface():
     # Creating new password
     def _new(self):
         print()
+        name = input("\nEnter new password's name: ")
         option = input("Do you want to generate password?(Y/n): ")
         
         if option == "Y": # generation of password
-            name = input("\nEnter new password's name: ")
             size = int(input("Enter new password's length: "))
             
             # Taking which symbols to use
@@ -61,8 +62,7 @@ class Interface():
             Passwords._new(name, size, style)
 
         elif option == "n": # manual input of password
-            name = input("\nEnter new password's name: ")
-            entered_password = input("Enter the password: ")
+            entered_password = getpass("Enter the password: ")
             Passwords._new_manual(name, entered_password)
          
         else: # wrong input handling
